@@ -44,11 +44,13 @@ var grid;
 let cols;
 let rows;
 let res = 20;
+let prev;
 function setup(){
 	createCanvas(600,600);
 	cols = width/res;
 	rows = height/res;
 	grid = make2DArray(cols, rows);
+	prev = make2DArray(cols, rows);
 	for(let i = 0;i < cols;i++){
 		for(let j = 0;j < rows;j++){
 			grid[i][j] = floor(random(2));
@@ -57,7 +59,6 @@ function setup(){
 	
 }
 function draw(){
-	let prev = make2DArray(cols,rows);
 	let next = make2DArray(cols,rows);
 	for(let i = 0;i < cols;i++){
 		for(let j = 0;j < rows;j++){
