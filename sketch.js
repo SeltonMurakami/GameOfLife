@@ -43,10 +43,12 @@ function rule(i,j){
 var grid;
 let cols;
 let rows;
-let res = 20;
+let res = prompt('resolution');
 let prev;
+let fr = prompt('Frame Rate');
 function setup(){
-	createCanvas(600,600);
+	createCanvas(prompt('width'),prompt('heigth'));
+	frameRate(fr);
 	cols = width/res;
 	rows = height/res;
 	grid = make2DArray(cols, rows);
@@ -59,18 +61,17 @@ function setup(){
 	
 }
 function draw(){
+	background('black');
 	let next = make2DArray(cols,rows);
 	for(let i = 0;i < cols;i++){
 		for(let j = 0;j < rows;j++){
 			let x = res * i;
 			let y = res * j;
 			if(grid[i][j]){
-				fill(255);	
-			}else{
-				fill(0)	
+				fill(255);
+				stroke(0)
+				rect(x,y,res-1,res-1);
 			}
-			stroke(0)
-			rect(x,y,res-1,res-1);
 			next[i][j] = rule(i,j)
 		}
 	}
